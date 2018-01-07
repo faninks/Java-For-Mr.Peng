@@ -44,13 +44,17 @@ public class view {
 						if(sts.isEmpty())
 							System.out.println("搜索结果为空哦~");
 						else {
+							System.out.println("是否显示详细的加班记录？(1/0|y/n)");
+							ch = cin.nextLine();
+							if("1".equals(ch)||"y".equals(ch))
+								continue;
 							System.out.println("-----------------------------------------");
 							for (Iterator<Staff> iterator = sts.iterator(); iterator.hasNext();) {
 								Staff staff = iterator.next();
 								System.out.println(staff.toString());
 							}
 						}
-						System.out.println("是否继续(1/0||y/n)");
+						System.out.println("是否继续(1/0|y/n)");
 						ch = cin.nextLine();
 						if("1".equals(ch)||"y".equals(ch))
 							continue;
