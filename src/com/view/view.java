@@ -1,6 +1,6 @@
 package com.view;
 
-import java.util.ArrayList;
+import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -32,16 +32,30 @@ public class view {
 			ch = cin.nextLine();
 			if("1".equals(ch)) {
 				while(true) {
-					System.out.println("请输入任意用户信息:");
+					System.out.println("-----------------------------------------");
+					System.out.println("请输入(部分)用户信息格式如下:");
+					System.out.println("姓名|性别|职工号|年龄|工资级别 +[空格]+[信息] , 或输入信息");
 					System.out.println("后退请输入q");
 					ch = cin.nextLine();
 					if("q".equals(ch))
 						break;
 					else {
-						ArrayList<Staff> sts = StaffServlet.quaryFind(ch);
-						for (Iterator<Staff> iterator = sts.iterator(); iterator.hasNext();) {
-							Staff staff = iterator.next();
-							System.out.println(staff.toString());
+						TreeSet<Staff> sts = StaffServlet.quaryFind(ch);
+						if(sts.isEmpty())
+							System.out.println("搜索结果为空哦~");
+						else {
+							System.out.println("-----------------------------------------");
+							for (Iterator<Staff> iterator = sts.iterator(); iterator.hasNext();) {
+								Staff staff = iterator.next();
+								System.out.println(staff.toString());
+							}
+						}
+						System.out.println("是否继续(1/0||y/n)");
+						ch = cin.nextLine();
+						if("1".equals(ch)||"y".equals(ch))
+							continue;
+						else {
+							break;
 						}
 					}
 				}
