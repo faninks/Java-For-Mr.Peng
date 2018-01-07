@@ -1,7 +1,9 @@
 package com.Servlet;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.dao.StaffDao;
 import com.model.Staff;
 
 //1.员工查询
@@ -11,8 +13,18 @@ import com.model.Staff;
 public class StaffServlet {
 
 	public static ArrayList<Staff> quaryFind(String ch) {
-		// TODO Auto-generated method stub
+		
 		ArrayList<Staff> sts = new ArrayList<>();
+		String[] str = ch.split(" ");
+		try {
+			if(str.length==1)
+				sts = StaffDao.findStaff(ch);
+			else {
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("搜索失败，请稍后操作");
+		}
 		return sts;
 	}
 

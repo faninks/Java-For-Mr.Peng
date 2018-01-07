@@ -1,15 +1,13 @@
 package HOJ_wCode;
 
+/**
+ * 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-/**
  * 
  * @author White3
- * @Problem Description ��һ��ż�����������ͬ�����ĺͣ��м��ֲ��أ�
- * @Input �������һЩ����ż������ֵ���ᳬ��10000���������ᳬ��500������0���������
- * @Output ��Ӧÿ��ż����������ɲ�ͬ�����ĸ�����ÿ�����ռһ�С�
+ * @Problem Description 
  *
 public class Fun2098 <T>{
 	public List<T> combinationObj(List<T> obj){

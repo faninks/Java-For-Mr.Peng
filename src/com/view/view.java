@@ -11,7 +11,7 @@ public class view {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-// aaaaaaaa
+		views();
 	}
 	//1.员工查询
 	//A、个人信息、B、工资情况、C、请假情况、D、加班情况
@@ -33,9 +33,9 @@ public class view {
 			if("1".equals(ch)) {
 				while(true) {
 					System.out.println("请输入任意用户信息:");
-					System.out.println("后退请输入quit");
+					System.out.println("后退请输入q");
 					ch = cin.nextLine();
-					if("quit".equals(ch))
+					if("q".equals(ch))
 						break;
 					else {
 						ArrayList<Staff> sts = StaffServlet.quaryFind(ch);

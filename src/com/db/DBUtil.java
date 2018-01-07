@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBUtil {
 	private static final String driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	private static final String dbURL="jdbc:sqlserver://localhost:1433;DatabaseName=AI_COMPANY_DATA";
+	private static final String dbURL="jdbc:sqlserver://localhost:1433;DatabaseName=pengchong";
 	private static final String userName="sa";
 	private static final String userPwd="123456";
 	private static Connection conn=null;
