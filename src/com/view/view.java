@@ -4,6 +4,8 @@ import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import com.Servlet.HardworkEventServlet;
+import com.Servlet.LeaveEventServlet;
 import com.Servlet.StaffServlet;
 import com.model.Staff;
 
@@ -21,9 +23,13 @@ public class view {
 	//A、所有部门工资一览、B、所有员工工资一览、C、工资提升率分布显示
 	public static void views() {
 		Scanner cin = new Scanner(System.in);
-		String ch = "";
+		boolean flag, flag2;
+		String ch;
 		System.out.println("欢迎进入工资管理系统");
 		while(true) {
+			flag = false;
+			flag2 = false;
+			ch = "";
 			System.out.println("1.员工查询");
 			System.out.println("2.部门查询");
 			System.out.println("3.工资全览");
@@ -44,14 +50,29 @@ public class view {
 						if(sts.isEmpty())
 							System.out.println("搜索结果为空哦~");
 						else {
+							flag = false;
+							flag2 = false;
+							System.out.println("是否显示详细的请假记录？(1/0|y/n)");
+							ch = cin.nextLine();
+							if("1".equals(ch)||"y".equals(ch))
+								flag = true;
 							System.out.println("是否显示详细的加班记录？(1/0|y/n)");
 							ch = cin.nextLine();
 							if("1".equals(ch)||"y".equals(ch))
-								continue;
+								flag2 = true;
 							System.out.println("-----------------------------------------");
 							for (Iterator<Staff> iterator = sts.iterator(); iterator.hasNext();) {
 								Staff staff = iterator.next();
-								System.out.println(staff.toString());
+								ch = staff.toString() + "\n";
+								if(flag) {
+									staff.setLvEvents(LeaveEventServlet.quaryFind("职工号", staff.getStaffNum()));
+									ch += staff.toStringLeaveEvent().trim() + "\n";
+								}
+								if(flag2) {
+									staff.setHwEvents(HardworkEventServlet.quaryFind("职工号", staff.getStaffNum()));
+									ch += staff.toStringhardworkEvent().trim() + "\n";
+								}
+								System.out.print(ch);
 							}
 						}
 						System.out.println("是否继续(1/0|y/n)");

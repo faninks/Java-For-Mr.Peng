@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.Iterator;
 import java.util.TreeSet;
 
 public class Staff implements Comparable<Staff>{
@@ -146,8 +147,27 @@ public class Staff implements Comparable<Staff>{
 					+ "\nB、工资情况、\n" + "基本工资: " + wages + "  工资级别: " + wagesGrade
 					+ "\nC、请假情况、\n" + "\nD、加班情况";
 		return "A、个人信息、\n" + "姓名: " + name + "  性别: " + sex + "  年龄: " + age +"\n部门: " + job.getDepartment() + "  职务: " + job.getJobName() + "  职工号: " + staffNum
-		+ "\nB、工资情况、\n" + "基本工资: " + wages + "  工资级别: " + wagesGrade
-		+ "\nC、请假情况、\n" + "\nD、加班情况";
+		+ "\nB、工资情况、\n" + "基本工资: " + wages + "  工资级别: " + wagesGrade;
+	}
+
+	// C、请假情况、
+	public String toStringLeaveEvent() {
+		String str = " C、请假情况、\n";
+		for (Iterator<LeaveEvent> iterator = lvEvents.iterator(); iterator.hasNext();) {
+			LeaveEvent leaveEvent = (LeaveEvent) iterator.next();
+			str = str + leaveEvent.toString() + "\n";
+		}
+		return str;
+	}
+
+	// D、加班情况、
+	public String toStringhardworkEvent() {
+		String str = "D、加班情况、\n";
+		for (Iterator<HardworkEvent> iterator = hwEvents.iterator(); iterator.hasNext();) {
+			HardworkEvent hardworkEvent = (HardworkEvent) iterator.next();
+			str = str + hardworkEvent.toString() + "\n";
+		}
+		return str;
 	}
 	
 	public Staff() {
