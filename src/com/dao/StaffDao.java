@@ -31,6 +31,15 @@ public class StaffDao {
 		return sts;
 	}
 
+	public static TreeSet<Staff> findAllStaff() throws SQLException {
+		Connection conn = DBUtil.getConnection();
+		String sql = "select DISTINCT * from staff;";
+		PreparedStatement psmt = conn.prepareStatement(sql);
+		// 执行SQL语句
+		ResultSet rs = psmt.executeQuery();
+		return doQuery(rs);
+	}
+
 	public static TreeSet<Staff> findStaff(String ch) throws SQLException {
 		TreeSet<Staff> sts = new TreeSet<>(), temp; 
 		for(int i=0; i<values.length; i++) {
@@ -44,6 +53,21 @@ public class StaffDao {
 	public static TreeSet<Staff> findByValues(String str, String str2) throws SQLException {
 		Connection conn = DBUtil.getConnection();
 		String sql = "select * from staff where " + str + " like ?;";
+		PreparedStatement psmt = conn.prepareStatement(sql);
+		psmt.setString(1, "%" + str2 + "%");
+		// 执行SQL语句
+		ResultSet rs = psmt.executeQuery();
+		return doQuery(rs);
+	}
+
+	public static TreeSet<Staff> findByValues(String[] values,String str, String str2) throws SQLException {
+		Connection conn = DBUtil.getConnection();
+		String sql = "select ";
+		if(values.length>0)
+		sql += values[0];
+		for(int i=1; i<values.length; i++)
+			sql += ","+values[i];
+		sql +=" from staff where " + str + " like ?;";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, "%" + str2 + "%");
 		// 执行SQL语句

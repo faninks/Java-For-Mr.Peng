@@ -22,10 +22,10 @@ public class LeaveEventDao {
 		}
 		return sts;
 	}
-
+	
 	public static TreeSet<LeaveEvent> findByValues(String str, String str2) throws SQLException {
 		Connection conn = DBUtil.getConnection();
-		String sql = "select * from leave where " + str + " like ?;";
+		String sql = "select * from dbo.leave where " + str + " like ?;";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, "%" + str2 + "%");
 		// 执行SQL语句

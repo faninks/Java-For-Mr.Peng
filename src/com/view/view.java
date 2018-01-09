@@ -4,6 +4,7 @@ import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import com.Servlet.DepartmentServlet;
 import com.Servlet.HardworkEventServlet;
 import com.Servlet.LeaveEventServlet;
 import com.Servlet.StaffServlet;
@@ -12,7 +13,6 @@ import com.model.Staff;
 public class view {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		views();
 	}
 
@@ -44,7 +44,7 @@ public class view {
 	}
 
 	// 1.员工查询
-	// A、个人信息、B、工资情况、C、请假情况、D、加班情况
+	// A、个人信息、B、工资情况、C、请假情况、D、加班情况、
 	public static void view0(Scanner cin) {
 		boolean flag, flag2;
 		String ch;
@@ -100,35 +100,81 @@ public class view {
 	// A、人员一览、B、加班一览、C、请假一览、D、部门详情、
 	public static void view1(Scanner cin) {
 		String ch = "";
+		DepartmentServlet ser = null;
 		while (true) {
 			System.out.println("-----------------------------------------");
 			System.out.println("请输入选项: ");
-			System.out.println("A、人员一览、");
-			System.out.println("B、加班一览、");
-			System.out.println("C、请假一览、");
-			System.out.println("D、部门详情、");
+			System.out.println("A、部门一览、");
+			System.out.println("B、人员一览、");
+			System.out.println("C、加班一览、");
+			System.out.println("D、请假一览、");
 			System.out.println("q、后退");
 			ch = cin.nextLine();
+			if(ser==null)
+				ser = new DepartmentServlet();
 			switch(ch.trim()) {
 				case "A":case "a":
-					
+					System.out.println(ser.showAll());
+					break;
 				case "B":case "b":
+					System.out.println(ser.showStaffs());
+					break;
 				case "C":case "c":
+					System.out.println(ser.showLvEvts());
+					break;
 				case "D":case "d":
+					System.out.println(ser.showHdwEvts());
+					break;
 			}
 			if("q".equals(ch.trim())||"Q".equals(ch.trim()))
+				break;
+			System.out.println("是否继续(1/0|y/n)");
+			ch = cin.nextLine();
+			if ("1".equals(ch) || "y".equals(ch))
+				continue;
+			else
 				break;
 		}
 	}
 
 	// 3.工资全览
-	// A、所有部门工资一览、B、所有员工工资一览、C、工资提升率分布显示
+	// A、所有部门工资一览、B、所有员工工资一览、C、工资提升率分布显示、
 	public static void view2(Scanner cin) {
+		String ch = "";
+		DepartmentServlet ser = null;
+		StaffServlet stfSer = null;
 		while (true) {
+			System.out.println("-----------------------------------------");
+			System.out.println("请输入选项: ");
 			System.out.println("A、所有部门工资一览、");
 			System.out.println("B、所有员工工资一览、");
 			System.out.println("C、工资提升率分布显示、");
-			System.out.println("D、后退");
+			System.out.println("q、后退");
+			ch = cin.nextLine();
+			if(stfSer == null)
+				stfSer = new StaffServlet();
+			if(ser == null)
+				ser = new DepartmentServlet();
+			switch(ch.trim()) {
+				case "A":case "a":
+					System.out.println(ser.showAllForOne());
+					break;
+				case "B":case "b":
+					System.out.println(stfSer.showOneForAll());
+					break;
+				case "C":case "c":
+					System.out.println(ser.showDistributedWages());
+					break;
+			}
+			if("q".equals(ch.trim())||"Q".equals(ch.trim()))
+				break;
+			System.out.println("是否继续(1/0|y/n)");
+			ch = cin.nextLine();
+			if ("1".equals(ch) || "y".equals(ch))
+				continue;
+			else
+				break;
 		}
 	}
+
 }

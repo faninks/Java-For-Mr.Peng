@@ -8,12 +8,17 @@ public class Department implements Comparable<Department>{
 	private TreeSet<Staff> staffs;
 	private String name;
 	private String dNum; // 002x001 -> 002 = dNum
+	private int num;	// temp
+	
+	public int getNum() {
+		return num;
+	}
 	
 	@Override
 	public int compareTo(Department o) {
-		if(Integer.valueOf(o.getdNum())>Integer.valueOf(dNum))
+		if(o.getNum()<this.num)
 			return 1;
-		else if(Integer.valueOf(o.getdNum()).equals(Integer.valueOf(dNum)))
+		else if(o.getdNum().equals(dNum))
 			return 0;
 		return -1;
 	}
@@ -81,7 +86,7 @@ public class Department implements Comparable<Department>{
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.trim();
 	}
 
 	public String getdNum() {
@@ -89,7 +94,8 @@ public class Department implements Comparable<Department>{
 	}
 
 	public void setdNum(String dNum) {
-		this.dNum = dNum;
+		this.dNum = dNum.trim();
+		this.num = Integer.valueOf(dNum.split("x")[0]);
 	}
 	
 }
