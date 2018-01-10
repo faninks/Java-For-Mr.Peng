@@ -18,27 +18,25 @@ public class view {
 
 	public static void views() {
 		Scanner cin = new Scanner(System.in);
-		String ch;
+		String ch = "";
 		System.out.println("欢迎进入工资管理系统");
 		while (true) {
-			ch = "";
 			System.out.println("1.员工查询");
 			System.out.println("2.部门查询");
 			System.out.println("3.工资全览");
 			System.out.println("quit.退出系统");
 			System.out.println("请输入你的选择");
 			ch = cin.nextLine();
-			if ("1".equals(ch)) {
+			if ("1".equals(ch))
 				view0(cin);
-			} else if ("2".equals(ch)) {
+			else if ("2".equals(ch))
 				view1(cin);
-			} else if ("3".equals(ch)) {
+			else if ("3".equals(ch))
 				view2(cin);
-			} else if ("quit".equals(ch)) {
+			else if ("quit".equals(ch))
 				break;
-			} else {
+			else
 				System.out.println("输入异常,请重新输入");
-			}
 		}
 		cin.close();
 	}
@@ -54,7 +52,7 @@ public class view {
 			System.out.println("姓名|性别|职工号|年龄|工资级别 +[空格]+[信息] , 或输入信息");
 			System.out.println("后退请输入q");
 			ch = cin.nextLine();
-			if ("q".equals(ch.trim())||"Q".equals(ch.trim()))
+			if ("q".equals(ch.trim()) || "Q".equals(ch.trim()))
 				break;
 			else {
 				TreeSet<Staff> sts = StaffServlet.quaryFind(ch);
@@ -110,23 +108,27 @@ public class view {
 			System.out.println("D、请假一览、");
 			System.out.println("q、后退");
 			ch = cin.nextLine();
-			if(ser==null)
+			if (ser == null)
 				ser = new DepartmentServlet();
-			switch(ch.trim()) {
-				case "A":case "a":
-					System.out.println(ser.showAll());
-					break;
-				case "B":case "b":
-					System.out.println(ser.showStaffs());
-					break;
-				case "C":case "c":
-					System.out.println(ser.showLvEvts());
-					break;
-				case "D":case "d":
-					System.out.println(ser.showHdwEvts());
-					break;
+			switch (ch.trim()) {
+			case "A":
+			case "a":
+				System.out.println(ser.showAll());
+				break;
+			case "B":
+			case "b":
+				System.out.println(ser.showStaffs());
+				break;
+			case "C":
+			case "c":
+				System.out.println(ser.showLvEvts());
+				break;
+			case "D":
+			case "d":
+				System.out.println(ser.showHdwEvts());
+				break;
 			}
-			if("q".equals(ch.trim())||"Q".equals(ch.trim()))
+			if ("q".equals(ch.trim()) || "Q".equals(ch.trim()))
 				break;
 			System.out.println("是否继续(1/0|y/n)");
 			ch = cin.nextLine();
@@ -151,22 +153,25 @@ public class view {
 			System.out.println("C、工资提升率分布显示、");
 			System.out.println("q、后退");
 			ch = cin.nextLine();
-			if(stfSer == null)
+			if (stfSer == null)
 				stfSer = new StaffServlet();
-			if(ser == null)
+			if (ser == null)
 				ser = new DepartmentServlet();
-			switch(ch.trim()) {
-				case "A":case "a":
-					System.out.println(ser.showAllForOne());
-					break;
-				case "B":case "b":
-					System.out.println(stfSer.showOneForAll());
-					break;
-				case "C":case "c":
-					System.out.println(ser.showDistributedWages());
-					break;
+			switch (ch.trim()) {
+			case "A":
+			case "a":
+				System.out.println(ser.showAllForOne());
+				break;
+			case "B":
+			case "b":
+				System.out.println(stfSer.showOneForAll());
+				break;
+			case "C":
+			case "c":
+				System.out.println(ser.showDistributedWages());
+				break;
 			}
-			if("q".equals(ch.trim())||"Q".equals(ch.trim()))
+			if ("q".equals(ch.trim()) || "Q".equals(ch.trim()))
 				break;
 			System.out.println("是否继续(1/0|y/n)");
 			ch = cin.nextLine();
