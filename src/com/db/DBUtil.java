@@ -1,11 +1,52 @@
 package com.db;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class DBUtil {
 
+	public static void main(String[] args) {
+		update("INSERT INTO department (职务号, 部门, 职务, 基本工资)" + "VALUES ('003x002', '零食部', '扫地僧', 88888880)");
+	}
+
+	/**
+	 * 释放Connection, ResultSet 和 Statement资源
+	 * @param conn
+	 * @param st
+	 * @param rs
+	 */
+	public static void release(ResultSet rs, 
+			Connection conn, Statement st) {
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		if (st != null)
+			try {
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		if (conn != null)
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+
+	/**
+	 * 释放Connection 和 Statement资源
+	 * @param conn
+	 * @param st
+	 */
 	public static void release(Connection conn, Statement st) {
 		if (st != null)
 			try {
@@ -21,6 +62,10 @@ public class DBUtil {
 			}
 	}
 
+	/**
+	 * 通用的版本更新方法，适用于 update, delete, insert方法
+	 * @param sql
+	 */
 	public static void update(String sql) {
 		Connection conn = null;
 		Statement st = null;
@@ -35,10 +80,11 @@ public class DBUtil {
 		}
 	}
 
-	public static void main(String[] args) {
-		update("INSERT INTO department (职务号, 部门, 职务, 基本工资)" + "VALUES ('003x002', '零食部', '扫地僧', 88888880)");
-	}
-
+	/**
+	 * 
+	 * @return 与数据库的连接
+	 * @throws SQLException
+	 */
 	public static Connection getConnection() throws SQLException {
 		// 准备连接数据库的四个字符串
 		String driver, jdbcURL, userName, userPwd;
