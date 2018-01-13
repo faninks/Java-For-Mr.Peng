@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-import com.db.DBUtil;
+import com.Utils.DBUtil;
 import com.model.Department;
 
 public class DepartmentDao {

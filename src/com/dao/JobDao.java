@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.db.DBUtil;
+import com.Utils.DBUtil;
 import com.model.Job;
 
 public class JobDao {

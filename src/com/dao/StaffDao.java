@@ -8,7 +8,7 @@ import java.util.TreeSet;
 import java.util.Iterator;
 
 import com.Servlet.Utils;
-import com.db.DBUtil;
+import com.Utils.DBUtil;
 import com.model.Staff;
 
 public class StaffDao {
