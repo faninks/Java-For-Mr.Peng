@@ -10,10 +10,6 @@ import java.util.Properties;
 
 public class DBUtil {
 
-	public static void main(String[] args) {
-		update("INSERT INTO department (职务号, 部门, 职务, 基本工资)" + "VALUES ('003x002', '零食部', '扫地僧', 88888880)");
-	}
-
 	/**
 	 * 释放Connection, ResultSet 和 Statement资源
 	 * @param conn
@@ -113,24 +109,3 @@ public class DBUtil {
 		return DriverManager.getConnection(jdbcURL, userName, userPwd);
 	}
 }
-
-// older0
-// private static final String driver =
-// "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-// private static final String jdbcURL =
-// "jdbc:sqlserver://localhost:1433;DatabaseName=pengchong";
-// private static final String userName = "sa";
-// private static final String userPwd = "123456";
-// private static Connection conn = null;
-//
-// public static Connection getConnection() {
-// try {
-// Class.forName(driver);
-// conn = DriverManager.getConnection(jdbcURL, userName, userPwd);
-// } catch (ClassNotFoundException e) {
-// e.printStackTrace();
-// } catch (SQLException e) {
-// e.printStackTrace();
-// }
-// return conn;
-// }

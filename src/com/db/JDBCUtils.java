@@ -7,14 +7,19 @@ import java.sql.ResultSetMetaData;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.model.Staff;
-
 public class JDBCUtils {
 
 	public static void main(String[] args) {
-		System.out.println(get("select 姓名 name,性别 sex,年龄 age from staff where 姓名  like ?;", Staff.class, "%彭聪%"));
+		System.out.println(get("select 姓名 name,性别 sex,年龄 age from staff where 姓名  like ?;", com.model.Staff.class, "%彭聪%"));
 	}
 
+	/**
+	 * 
+	 * @param sql 针对 select 类型的sql语句的执行
+	 * @param clazz 查询结果的数据类
+	 * @param args sql语句中的未知值 (?)
+	 * @return
+	 */
 	public static <T> T get(String sql, Class<T> clazz, Object... args) {
 		T obj = null;
 
