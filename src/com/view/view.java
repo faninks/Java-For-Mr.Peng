@@ -1,6 +1,7 @@
 package com.view;
 
 import java.util.TreeSet;
+import java.util.logging.Logger;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -11,7 +12,27 @@ import com.Servlet.StaffServlet;
 import com.model.Staff;
 
 public class view {
+	String loggingClassName;
+	public void test(String paramString) {
+		Logger loggerExternal = Logger.getLogger("com.microsoft.sqlserver.jdbc.Connection");
+		loggerExternal.entering(getClassNameLogging(), "prepareStatement", paramString);
+		/**
+		 * public void entering(String sourceClass,String sourceMethod, Object param1)
+		 * 使用一个参数记录方法条目。 
+		 * 这是一种方便的方法，可用于将条目记录到方法中。 具有消息“ENTRY {0}”的LogRecord，
+		 * 日志级别FINER，并且记录给定的sourceMethod，sourceClass和参数。 
+		 * 参数
+		 * sourceClass - 发出日志记录请求的类的名称
+		 * sourceMethod- 正在输入的方法的名称 
+		 * param1 - 要输入的方法的参数 
+		 */
+	}
 
+	public String getClassNameLogging() {
+		return this.loggingClassName;
+	}
+	
+	// ------------------------------------------------------------
 	public static void main(String[] args) {
 		views();
 	}
