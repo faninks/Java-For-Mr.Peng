@@ -18,7 +18,7 @@ public class view {
 		loggerExternal.entering(getClassNameLogging(), "prepareStatement", paramString);
 		/**
 		 * public void entering(String sourceClass,String sourceMethod, Object param1)
-		 * 使用一个参数记录方法条目。 
+		 * 使用一个参数记录方法 条目。 
 		 * 这是一种方便的方法，可用于将条目记录到方法中。 具有消息“ENTRY {0}”的LogRecord，
 		 * 日志级别FINER，并且记录给定的sourceMethod，sourceClass和参数。 
 		 * 参数
