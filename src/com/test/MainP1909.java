@@ -13,9 +13,9 @@ public class MainP1909 {
         }
         for(int i=1; i<7; i+=2){
             k = n[0]/n[i];
-            if(n[0]%n[i]==0)    k++;
+            if(n[0]%n[i]!=0)    k++;
             k *= n[i+1];
-            if(min!=-1&&k<min)  min = k;
+            if(min==-1||k<min)  min = k;
         }
         System.out.println(min);
         cin.close();
