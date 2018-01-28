@@ -112,6 +112,7 @@ public class DBUtil {
 		}
 		return objs;
 	}
+	
 	/**
 	 * 释放Connection, ResultSet 和 Statement资源
 	 * @param conn
@@ -141,26 +142,6 @@ public class DBUtil {
 	}
 
 	/**
-	 * 释放Connection 和 Statement资源
-	 * @param conn
-	 * @param st
-	 */
-	public static void release(Connection conn, Statement st) {
-		if (st != null)
-			try {
-				st.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		if (conn != null)
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-	}
-
-	/**
 	 * 通用的版本更新方法，适用于 update, delete, insert方法
 	 * @param sql
 	 */
@@ -174,7 +155,7 @@ public class DBUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			release(conn, st);
+			release(null, conn, st);
 		}
 	}
 
