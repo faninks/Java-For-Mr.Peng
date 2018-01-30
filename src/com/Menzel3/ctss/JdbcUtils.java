@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
 
 
@@ -32,6 +30,14 @@ public class JdbcUtils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("------start connecting to server------");
+		Connection conn = JdbcUtils.getConnetion();
+		System.out.println(conn);
+		JdbcUtils.release(conn, null, null);
+		System.out.println("------close connecting to server------");
 	}
 	
 	public static Connection getConnetion() {

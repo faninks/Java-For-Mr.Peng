@@ -1,9 +1,7 @@
 package com.Menzel3.ctss;
 
 import java.sql.Connection;
-
 import javax.sql.DataSource;
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class c3p0Test {

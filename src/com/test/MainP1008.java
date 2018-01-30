@@ -9,5 +9,6 @@ public class MainP1008 {
 		for(int i=100; i<334; i++) {
 			
 		}
+		cin.close();
 	}
 }

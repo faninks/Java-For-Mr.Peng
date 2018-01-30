@@ -1,25 +1,17 @@
-package com.Utils;
+package com.Menzel3.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeSet;
 
-public class JDBCUtils {
+import com.Utils.DBUtil;
+import com.Utils.ReflectionUtils;
 
-	public static void main(String[] args) {
-		System.out.println(get("select 姓名 name,性别 sex,年龄 age from staff where 姓名  like ?;", com.model.Staff.class, "%彭聪%"));
-		System.out.println("--------------------------------------------------------------");
-		TreeSet<com.model.Staff> sts = getValues("select 姓名 name,性别 sex,年龄 age from staff;", com.model.Staff.class);
-		for (Iterator<com.model.Staff> iterator = sts.iterator(); iterator.hasNext();) {
-			com.model.Staff staff = iterator.next();
-			System.out.println(staff.toString());
-		}
-	}
+public class JDBCUtils {
 
 	/**
 	 * 返回通过sql语句查询出数据,但是只限一个数据, 或数据的第一条

@@ -20,5 +20,6 @@ public class MainP1085 {
 			}
 		}
 		System.out.println(flag);
+		cin.close();
 	}
 }
