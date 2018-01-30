@@ -1,0 +1,33 @@
+<c3p0-config>
+	<!-- C3P0的缺省(默认)配置， 如果在代码中“ComboPooledDataSource ds = new ComboPooledDataSource();”这样写就表示使用的是C3P0的缺省(默认)配置信息来创建数据源 -->
+	<default-config>
+		<property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver
+		</property>
+		<property name="jdbcUrl">jdbc:sqlserver:///pengchong?characterEncoding=utf-8
+		</property>
+		<property name="user">sa</property>
+		<property name="password">123456</property>
+
+		<property name="acquireIncrement">5</property>
+		<property name="initialPoolSize">10</property>
+		<property name="minPoolSize">5</property>
+		<property name="maxPoolSize">20</property>
+	</default-config>
+
+    <!--
+    C3P0的命名配置，
+    如果在代码中“new ComboPooledDataSource("SQLServer");”这样写就表示使用的是name是SQLServer的配置信息来创建数据源
+    -->
+    <named-config name="SQLServer">
+        <property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="jdbcUrl">jdbc:sqlserver://localhost:1433;DatabaseName=pengchong</property>
+        <property name="user">sa</property>
+        <property name="password">123456</property>
+        
+        <property name="acquireIncrement">5</property>
+        <property name="initialPoolSize">10</property>
+        <property name="minPoolSize">5</property>
+        <property name="maxPoolSize">20</property>
+    </named-config>
+
+</c3p0-config>

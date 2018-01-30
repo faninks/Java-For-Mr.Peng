@@ -1,4 +1,0 @@
-driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
-jdbcURL=jdbc:sqlserver://localhost:1433;DatabaseName=pengchong
-userName=sa
-userPwd=123456
