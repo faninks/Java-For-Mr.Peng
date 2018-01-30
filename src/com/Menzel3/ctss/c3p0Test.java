@@ -12,16 +12,13 @@ public class c3p0Test {
     
     static {
         try {
-        	// dataSource = new ComboPooledDataSource();
-        	dataSource = new ComboPooledDataSource("SQLServer");
+        	dataSource = new ComboPooledDataSource();
+        	// dataSource = new ComboPooledDataSource("SQLServer");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
-    /*
-     * 获取数据库连接对象
-     */
     public static Connection getConnection(){
     	Connection conn = null;
     	try {
