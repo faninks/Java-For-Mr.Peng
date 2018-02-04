@@ -40,6 +40,10 @@ public class JdbcUtils {
 		System.out.println("------close connecting to server------");
 	}
 	
+	/**
+	 * 获取数据库连接池的 Connection对象
+	 * @return
+	 */
 	public static Connection getConnetion() {
 		Connection conn = null;
 		try {
