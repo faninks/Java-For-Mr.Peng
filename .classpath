@@ -26,5 +26,10 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="F:/environment/jdbc/c3p0-0.9.5.2/lib/c3p0-0.9.5.2.jar" sourcepath="F:/environment/jdbc/c3p0-0.9.5.2/src/c3p0-0.9.5.2-sources.jar"/>
 	<classpathentry kind="lib" path="F:/environment/jdbc/c3p0-0.9.5.2/lib/mchange-commons-java-0.2.11.jar" sourcepath="F:/environment/jdbc/c3p0-0.9.5.2/src/mchange-commons-java-0.2.11-sources.jar"/>
+	<classpathentry kind="lib" path="F:/environment/jdbc/commons-dbutils-1.7/commons-dbutils-1.7.jar" sourcepath="F:/environment/jdbc/commons-dbutils-1.7/commons-dbutils-1.7-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/F:/environment/jdbc/commons-dbutils-1.7/commons-dbutils-1.7-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
