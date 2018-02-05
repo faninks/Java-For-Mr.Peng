@@ -18,13 +18,13 @@ import com.Utils.ReflectionUtils;
 
 public class JdbcDaoImpl<T> implements Dao<T> {
 	private QueryRunner queryRunner = null;
-	private Class<T> type;
+	private Class<T> type = null;
 
 	public JdbcDaoImpl() {
 		queryRunner = new QueryRunner();
 		type = ReflectionUtils.getSuperGenericType(getClass());
 	}
-
+	
 	@Override
 	public void batch(Connection connection, String sql, Object[]... args) {
 		try {
@@ -46,7 +46,7 @@ public class JdbcDaoImpl<T> implements Dao<T> {
 			for (int i = 0; i < args.length; ++i)
 				ppst.setObject(i + 1, args[i]);
 			rs = ppst.executeQuery();
-			value = rs.next()?(E)rs.getObject(0):null;
+			value = rs.next() ? (E) rs.getObject(0) : null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -81,19 +81,18 @@ public class JdbcDaoImpl<T> implements Dao<T> {
 				// 5> 通过反射赋值创建得到该对象
 				if (values.size() > 0) {
 					obj = type.newInstance();
-					for (Map.Entry<String, Object> entry : values.entrySet()) {
+					for (Map.Entry<String, Object> entry : values.entrySet())
 						ReflectionUtils.setFieldValue(obj, entry.getKey(), entry.getValue());
-					}
 				}
 				values.clear();
 				arr.add(obj);
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JdbcUtils.release(null, rs, ppst);
 		}
-		return arr.size()>0?arr:null;
+		return arr.size() > 0 ? arr : null;
 	}
 
 	@Override
