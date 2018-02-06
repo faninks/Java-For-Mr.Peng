@@ -49,6 +49,7 @@ public class JdbcUtils {
 		try {
 			conn = dataSource.getConnection();
 			conn.setAutoCommit(false);
+			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
