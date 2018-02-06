@@ -28,22 +28,6 @@ public class StaffDaoImpl extends JdbcDaoImpl<Staff> {
 				System.out.println(staff.getName());
 			}
 			System.out.println("-----------------------------------------------------");
-			Runnable th = new Runnable() {
-				@Override
-				public void run() {
-					try {
-						Connection connection = JdbcUtils.getConnetion();
-						List<Staff> list = sdi.getForList(connection, "select 姓名 name from staff");
-						for (Iterator<Staff> iterator = list.iterator(); iterator.hasNext();) {
-							Staff staff = iterator.next();
-							System.out.println(staff.getName());
-						}
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					
-				}
-			};
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
