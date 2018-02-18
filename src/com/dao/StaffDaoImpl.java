@@ -1,13 +1,11 @@
 package com.dao;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 
-import com.Menzel3.Dao.JdbcDaoImpl;
-import com.Menzel3.ctss.JdbcUtils;
-import com.model.Staff;
+import com.Menzel3.Dao.*;
+import com.Menzel3.ctss.*;
+import com.model.*;
 
 public class StaffDaoImpl extends JdbcDaoImpl<Staff> {
 	
